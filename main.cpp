@@ -164,9 +164,24 @@ int main()
         }
 
         case 5: // Display All Books
-            library.displayAllBooks();
+        {
+            cout << "Spécifiez le tri que vous voulez \n";
+            cout << "1.  Tri par titre.\n";
+            cout << "2.  Tri par auteur.\n";
+            string typeTri = getInput("Entrez votre choix : ");
+            if (typeTri == "1" || typeTri == "2")
+            {
+                library.displayAllBooks(typeTri);
+            }
+            else
+            {
+                cout << "Choix invalide. Affichage par défaut (titre).\n";
+                typeTri = "1";
+                library.displayAllBooks(typeTri);
+            }
             pauseForInput();
             break;
+        }
 
         case 6: // Display Available Books
             library.displayAvailableBooks();
