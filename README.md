@@ -20,6 +20,7 @@ Pour ca il suffit de les copiers dans le repertoire `build` avec l'application `
 stringstream est un flux qui permet de lire et écrire dans une chaine de caractères. Il est très utile pour formatter, parser et réutiliser des chaines de caractères. Voici quelques exemples.
 
 Formattage :
+```
 stringstream ss;
 
 string chaine1 = abcd;
@@ -28,8 +29,11 @@ string chaine2 = efgh;
 ss << chaine1 << chaine2;
 
 cout << ss.str() << endl; // "abcdefgh"
+```
+Ici nous ajoutons plusieurs string dans le stringstream à l'aide du <<.
 
 Parsage :
+```
 string ligne = "chat;chien";
 stringstream ss(ligne);
 string mot1;
@@ -40,6 +44,8 @@ getline(ss, mot2, ';');
 
 cout << mot1 << endl; // "chat"
 cout << mot2 << endl; // "chien"
+```
+Ici nous prenons le string ligne contenant plusieurs mots séparés par un point virgule et nous parsont cette ligne à l'aide de la fonction getline()
 
 Il est utilisé dans le projet pour parser les lignes des fichiers textes du répertoire data permettant d'en récupérer l'information. 
 
@@ -56,7 +62,7 @@ Si nous voulons aller plus loin, nous pouvons ajouter une troisième table qui p
 Nous pouvons également créer des index permettant une recherche dans la base de donnée beaucoup plus rapide.
 
 Voici un exemple d'implémentation dans MySQL :
-
+```
 -- Livres
 CREATE TABLE books (
   id           BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -82,3 +88,4 @@ CREATE TABLE loans (
   returned_at  TIMESTAMP NULL
 );
 CREATE INDEX idx_loans_open ON loans (book_id) WHERE returned_at IS NULL;
+```
